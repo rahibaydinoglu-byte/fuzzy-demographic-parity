@@ -1,0 +1,20 @@
+{
+ "antecedents k=3": {
+  "fidelity": 0.9823652869823004,
+  "dgap": 0.0030788622127146,
+  "contrib_corr": 0.8651323733217111,
+  "top4_overlap": 0.775
+ },
+ "both": {
+  "fidelity": 0.8337142696141111,
+  "dgap": 0.0140246188057062,
+  "contrib_corr": 0.5759520647024707,
+  "top4_overlap": 0.528125
+ },
+ "consequents 5": {
+  "fidelity": 0.8437184607607519,
+  "dgap": 0.0136585396539885,
+  "contrib_corr": 0.6873804402295998,
+  "top4_overlap": 0.60625
+ }
+}

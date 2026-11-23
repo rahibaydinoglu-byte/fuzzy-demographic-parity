@@ -36,7 +36,7 @@ def pareto_fig():
     for ax in axes[:, 0]: ax.set_ylabel('Test accuracy')
     h, l = axes[0, 0].get_legend_handles_labels()
     fig.legend(h, l, loc='lower center', ncol=8, fontsize=7, bbox_to_anchor=(0.5, -0.04), handletextpad=0.3, columnspacing=0.9)
-    fig.tight_layout(rect=(0, 0.04, 1, 1)); fig.savefig(f'{F}/fig_pareto.png'); plt.close(fig)
+    fig.tight_layout(rect=(0, 0.04, 1, 1)); fig.savefig(f'{F}/fig_pareto.png'); fig.savefig(f'{F}/fig_pareto.pdf'); plt.close(fig)
 
 def threshold_fig():
     files = sorted(glob.glob(f'{R}/threshold_*.csv'))
@@ -55,7 +55,7 @@ def threshold_fig():
     axes[0].set_ylabel('Parity gap of the same decisions')
     h, l = axes[0].get_legend_handles_labels()
     fig.legend(h, l, loc='lower center', ncol=2, fontsize=7, bbox_to_anchor=(0.5, -0.1))
-    fig.tight_layout(rect=(0, 0.06, 1, 1)); fig.savefig(f'{F}/fig_threshold.png'); plt.close(fig)
+    fig.tight_layout(rect=(0, 0.06, 1, 1)); fig.savefig(f'{F}/fig_threshold.png'); fig.savefig(f'{F}/fig_threshold.pdf'); plt.close(fig)
 
 def displacement_fig():
     D = pd.read_csv(f'{R}/tables/decomposition.csv')
@@ -76,7 +76,7 @@ def displacement_fig():
     for ax in axes[:, 0]: ax.set_ylabel('Signed contribution\nto parity gap')
     h, l = axes[0, 0].get_legend_handles_labels()
     fig.legend(h, l, loc='lower center', ncol=3, fontsize=7, bbox_to_anchor=(0.5, -0.03))
-    fig.tight_layout(rect=(0, 0.05, 1, 1)); fig.savefig(f'{F}/fig_displacement.png'); plt.close(fig)
+    fig.tight_layout(rect=(0, 0.05, 1, 1)); fig.savefig(f'{F}/fig_displacement.png'); fig.savefig(f'{F}/fig_displacement.pdf'); plt.close(fig)
 
 def audit_fig(name='Adult', lam='0.0'):
     A = pd.read_csv(f'{R}/audit_{name}_lam{lam}.csv'); A = A[A.model == 'zero-order'].copy()
@@ -88,7 +88,7 @@ def audit_fig(name='Adult', lam='0.0'):
     ax.axvline(0, color=MUTED, lw=0.6); ax.set_xlabel('Contribution of rule to parity gap Δ (zero-order: routing only)')
     tot = A.routing.sum()
     ax.set_title(f'{name}: Σ rule contributions = {tot:+.3f}  (directly measured gap {A.direct_gap.iloc[0]:+.3f})', fontsize=8)
-    fig.tight_layout(); fig.savefig(f'{F}/fig_audit_{name}.png'); plt.close(fig)
+    fig.tight_layout(); fig.savefig(f'{F}/fig_audit_{name}.png'); fig.savefig(f'{F}/fig_audit_{name}.pdf'); plt.close(fig)
 
 def scaling_fig():
     S = pd.read_csv(f'{R}/scaling.csv')
@@ -107,7 +107,7 @@ def scaling_fig():
     for ax in axes:
         ax.yaxis.set_major_formatter(FuncFormatter(lambda v, _: f'{v:g}')); ax.yaxis.set_minor_formatter(FuncFormatter(lambda v, _: ''))
     axes[0].legend(fontsize=7)
-    fig.tight_layout(); fig.savefig(f'{F}/fig_scaling.png'); plt.close(fig)
+    fig.tight_layout(); fig.savefig(f'{F}/fig_scaling.png'); fig.savefig(f'{F}/fig_scaling.pdf'); plt.close(fig)
 
 def cd_fig():
     s = json.load(open(f'{R}/tables/summary.json'))['friedman_hv']
@@ -122,7 +122,7 @@ def cd_fig():
         ax.text(0.97 if left else k + 0.03, yy, f'{n} ({r:.2f})', ha='right' if left else 'left', va='center', fontsize=7)
     ax.plot([1, 1 + cd], [0.97, 0.97], color=C[7], lw=1.6); ax.text(1 + cd / 2, 1.0, f'CD = {cd:.2f}', ha='center', fontsize=7, color=INK)
     ax.set_title(f"Mean ranks by hypervolume over {s['N']} datasets (Friedman p = {s['p']:.3g})", fontsize=8, pad=14)
-    fig.savefig(f'{F}/fig_cd.png'); plt.close(fig)
+    fig.savefig(f'{F}/fig_cd.png'); fig.savefig(f'{F}/fig_cd.pdf'); plt.close(fig)
 
 if __name__ == '__main__':
     for fn in sys.argv[1:] or ['pareto', 'threshold', 'displacement', 'audit', 'scaling', 'cd']:

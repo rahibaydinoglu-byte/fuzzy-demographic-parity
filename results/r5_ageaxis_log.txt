@@ -1,0 +1,30 @@
+ageaxis Bank 0
+ageaxis Bank 1
+ageaxis Bank 2
+ageaxis Bank 3
+ageaxis Bank 4
+ageaxis Bank 5
+ageaxis Bank 6
+ageaxis Bank 7
+ageaxis Bank 8
+ageaxis Bank 9
+ageaxis German 0
+ageaxis German 1
+ageaxis German 2
+ageaxis German 3
+ageaxis German 4
+ageaxis German 5
+ageaxis German 6
+ageaxis German 7
+ageaxis German 8
+ageaxis German 9
+                        acc   rate  corr_age  band_0_25  n_0_25  band_25_30  n_25_30  band_30_35  n_30_35  band_35_45  n_35_45  band_45_60  n_45_60  band_60_200  n_60_200
+dataset model    lam                                                                                                                                                      
+Bank    DNN      0    0.893  0.050     0.055      0.067   267.0       0.020   1122.7      -0.012   1973.6      -0.018   2777.4      -0.012   2657.4        0.268     244.9
+                 10   0.893  0.045     0.122      0.001   267.0      -0.001   1122.7      -0.013   1973.6      -0.014   2777.4      -0.005   2657.4        0.323     244.9
+        ZadehNet 0    0.894  0.040     0.043      0.062   267.0       0.016   1122.7      -0.009   1973.6      -0.015   2777.4      -0.011   2657.4        0.217     244.9
+                 10   0.893  0.035     0.106      0.002   267.0       0.000   1122.7      -0.009   1973.6      -0.012   2777.4      -0.005   2657.4        0.259     244.9
+German  DNN      0    0.748  0.776     0.045     -0.065    38.0      -0.030     47.9       0.031     35.2       0.081     41.6      -0.035     29.4        0.060       7.9
+                 10   0.750  0.826    -0.034     -0.012    38.0       0.001     47.9       0.016     35.2       0.042     41.6      -0.068     29.4        0.010       7.9
+        ZadehNet 0    0.752  0.798     0.034     -0.076    38.0      -0.006     47.9       0.026     35.2       0.077     41.6      -0.046     29.4        0.036       7.9
+                 10   0.748  0.838    -0.034     -0.023    38.0       0.013     47.9       0.021     35.2       0.033     41.6      -0.067     29.4        0.006       7.9

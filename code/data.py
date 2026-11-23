@@ -91,7 +91,13 @@ def census_kdd():
     X = d.drop(columns=['income', 'sex', 'instance_weight', 'household_detail'])  # instance_weight is a survey weight, not a feature
     return X, y, s, s.astype(float), d.age.values, None, dict(name='CensusKDD', attr='sex (female)', fuzzy=False)
 
-LOADERS = dict(German=german, Student=student, COMPAS=compas, Default=default, Bank=bank, Adult=adult, Diabetes=diabetes, CensusKDD=census_kdd)
+def adult_age():
+    """Adult with the fuzzy group young (age) as the protected group (round 7); age is removed from the inputs, sex is kept."""
+    X, y, s, mu, age, groups, meta = adult()
+    X = X.drop(columns=['age'])
+    return X, y, (age <= 25).astype(int), young(age), age, None, dict(name='AdultAge', attr='age (young)', fuzzy=True)
+
+LOADERS = dict(German=german, Student=student, COMPAS=compas, Default=default, Bank=bank, Adult=adult, Diabetes=diabetes, CensusKDD=census_kdd, AdultAge=adult_age)
 
 def split_and_encode(X, y, s, mu, groups, seed, max_train=None):
     """60/20/20 split stratified on (y, s) (or grouped by patient); one-hot + standardise fit on train only."""

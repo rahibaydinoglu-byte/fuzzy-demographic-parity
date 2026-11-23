@@ -1,0 +1,15 @@
+interp4 CensusKDD 0
+interp4 CensusKDD 1
+interp4 CensusKDD 2
+interp4 Adult 0
+interp4 Adult 1
+interp4 Adult 2
+interp4 German 0
+interp4 German 1
+interp4 German 2
+interp4 Student 0
+interp4 Student 1
+interp4 Student 2
+interp4 Bank 0
+interp4 Bank 1
+interp4 Bank 2

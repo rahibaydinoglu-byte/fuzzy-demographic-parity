@@ -1,0 +1,15 @@
+CensusKDD 0
+CensusKDD 1
+CensusKDD 2
+Diabetes 0
+Diabetes 1
+Diabetes 2
+Adult 0
+Adult 1
+Adult 2
+German 0
+German 1
+German 2
+Student 0
+Student 1
+Student 2

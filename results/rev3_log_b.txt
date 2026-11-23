@@ -1,0 +1,32 @@
+with proxies 0
+with proxies 1
+with proxies 2
+with proxies 3
+with proxies 4
+with proxies 5
+with proxies 6
+with proxies 7
+with proxies 8
+with proxies 9
+without marital/relationship 0
+without marital/relationship 1
+without marital/relationship 2
+without marital/relationship 3
+without marital/relationship 4
+without marital/relationship 5
+without marital/relationship 6
+without marital/relationship 7
+without marital/relationship 8
+without marital/relationship 9
+Diabetes 0
+Diabetes 1
+Diabetes 2
+Bank 0
+Bank 1
+Bank 2
+Default 0
+Default 1
+Default 2
+COMPAS 0
+COMPAS 1
+COMPAS 2

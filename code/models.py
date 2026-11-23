@@ -95,7 +95,7 @@ class AdvMLP(nn.Module):
 
 # ---------------------------------------------------------------- training
 def train_torch(model, Xtr, ytr, mutr, Xva, yva, muva, lam_f=0.0, fair='total', lam_b=0.1, lam_a=1e-3, lam_g=1e-3,
-                lr=1e-2, epochs=100, batch=512, patience=10, seed=0, wd=0.0, verbose=False):
+                lr=1e-2, epochs=100, batch=512, patience=10, seed=0, wd=0.0, verbose=False, early_stop=True):
     """fair in {'total','rule'}: total penalises Delta^2 (Prop. 2); rule penalises sum_l mbar_l (r_l^G - r_l^N)^2,
     an upper bound on the squared within-rule term of Theorem 1 (Jensen)."""
     torch.manual_seed(seed); np.random.seed(seed)
@@ -130,12 +130,14 @@ def train_torch(model, Xtr, ytr, mutr, Xva, yva, muva, lam_f=0.0, fair='total', 
         ep_times.append(time.time() - te)
         model.eval()
         with torch.no_grad(): v = float(objective(Xva, yva, muva))
+        if not early_stop: continue                      # plain protocol: fixed number of epochs, last iterate kept
         if v < best - 1e-5: best, bad, best_state = v, 0, {k: t.clone() for k, t in model.state_dict().items()}
         else:
             bad += 1
             if bad >= patience: break
         if verbose: print(ep, round(v, 4))
-    model.load_state_dict(best_state); model.eval()
+    if early_stop: model.load_state_dict(best_state)
+    model.eval()
     return dict(epochs=ep + 1, train_time=time.time() - t0, epoch_time=float(np.mean(ep_times)))
 
 def predict(model, X, bs=8192):

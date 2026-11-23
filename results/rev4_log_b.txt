@@ -1,0 +1,49 @@
+moe COMPAS 0
+moe COMPAS 1
+moe COMPAS 2
+moe COMPAS 3
+moe COMPAS 4
+moe COMPAS 5
+moe COMPAS 6
+moe COMPAS 7
+moe COMPAS 8
+moe COMPAS 9
+noproxy3 with proxies 0
+noproxy3 with proxies 1
+noproxy3 with proxies 2
+noproxy3 with proxies 3
+noproxy3 with proxies 4
+noproxy3 with proxies 5
+noproxy3 with proxies 6
+noproxy3 with proxies 7
+noproxy3 with proxies 8
+noproxy3 with proxies 9
+noproxy3 without marital/relationship 0
+noproxy3 without marital/relationship 1
+noproxy3 without marital/relationship 2
+noproxy3 without marital/relationship 3
+noproxy3 without marital/relationship 4
+noproxy3 without marital/relationship 5
+noproxy3 without marital/relationship 6
+noproxy3 without marital/relationship 7
+noproxy3 without marital/relationship 8
+noproxy3 without marital/relationship 9
+moe Adult 0
+moe Adult 1
+moe Adult 2
+moe Adult 3
+moe Adult 4
+moe Adult 5
+moe Adult 6
+moe Adult 7
+moe Adult 8
+moe Adult 9
+interp4 Diabetes 0
+interp4 Diabetes 1
+interp4 Diabetes 2
+interp4 Default 0
+interp4 Default 1
+interp4 Default 2
+interp4 COMPAS 0
+interp4 COMPAS 1
+interp4 COMPAS 2

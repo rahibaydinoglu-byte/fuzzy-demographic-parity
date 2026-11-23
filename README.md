@@ -1,12 +1,14 @@
-# Fuzzy demographic parity and rule-level disparity decomposition (ZadehNet)
+# Fuzzy demographic parity, rule-level disparity decomposition and rule-local fairness constraints (FairTSK)
 
 Code and complete per-split results for the article
 
-> R. Imamguluyev, *Fuzzy demographic parity and exact rule-level disparity decomposition for auditable fairness-aware TSK classifiers* (submitted).
+> R. Imamguluyev, *Fuzzy demographic parity, rule-level disparity decomposition and the failure of rule-local fairness constraints in Takagi–Sugeno–Kang classifiers* (submitted to *Knowledge and Information Systems*).
+
+The model called **FairTSK** in the article is the class `ZadehNet` in the code. Version 1.1 adds the experiments of the revised article (scripts listed below).
 
 The repository contains:
 
-- **ZadehNet**, a fairness-aware first-order (and zero-order) Takagi–Sugeno–Kang classifier;
+- **ZadehNet** (FairTSK in the article), a fairness-aware first-order (and zero-order) Takagi–Sugeno–Kang classifier;
 - the **fuzzy demographic parity** (FDP) penalty;
 - the exact **routing / within-rule decomposition** of the parity gap (Theorem 1);
 - every experiment, table and figure reported in the paper.
@@ -53,7 +55,29 @@ python code/check_theory.py
 
 Seeds 0–9 fix splits, initialisation and mini-batch order. Runs used one CPU thread each (`torch.set_num_threads(1)`). Small floating-point differences across platforms and library versions are possible.
 
-## Using ZadehNet and the decomposition on your own data
+## Experiments of the revised article (v1.1)
+
+All tables of the article and of Online Resource 1 are generated from result files by `code/tables_v3.py` and then `code/tables_v4.py` (no number is typed by hand); figures by `code/figs_v4.py`. The manuscript is assembled from `paper_v4/q*.md` and `paper_v4/s_supp.md` by `paper_v4/assemble_v4.py` and typeset with the Springer Nature LaTeX template by `paper_v4/build_latex.py TEMPLATE_DIR`.
+
+```
+code/synth.py            synthetic study with known Bayes score (Theorem 2; Section 6.4)
+code/synth_gap.py        additional synthetic configurations: frozen antecedents with L up to 128, centres frozen, trainable L = 3
+code/align.py            alignment of Theorem 2 / Corollary 3 with training (plain and regularised protocols)
+code/cov_baselines.py    covariance and HGR penalties on age versus FDP (German, Bank)
+code/interp_baselines.py fair decision tree and FairCORELS baselines
+code/rev2.py, rev3.py    compact rule bases, attribution stability, rule audit, proxy removal
+code/rev4.py             calibration and bootstrap variability, mixture of experts with a softmax gate
+code/round5.py           score/decision correlation, HV reference sensitivity, age-axis analysis
+code/round6.py           log-loss and consequent norms of first-order, rule-local and zero-order models; Oaxaca-Blinder reference weights
+code/egb.py              Exponentiated Gradient with a LightGBM base learner
+code/round7.py           Adult with the fuzzy group young (dataset AdultAge in data.py; run first: python code/run.py AdultAge 0 ... 9)
+code/stats_revision.py, stats_round3.py, analysis_round4.py, analyze_revision.py   statistics of the revision
+code/check_theory2.py    numerical check of Lemma 1, Proposition 3 and Corollary 2
+```
+
+Example: `python code/round6.py COMPAS 0 1 2 3 4 5 6 7 8 9`, `python code/egb.py Adult 0 1 2 3 4 5 6 7 8 9`, `python code/synth_gap.py nonlinear 0 1 2 3 4`.
+
+## Using ZadehNet (FairTSK) and the decomposition on your own data
 
 ```python
 import torch
